@@ -1,8 +1,44 @@
-# React + Vite
+# CraftNCode : IIIT Bhubaneswar Hackathon 
+This is our OFFICIAL Repository for CraftNCode Hackathon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
 
-Currently, two official plugins are available:
+**Client:** React,  TailwindCSS , JavaScript , HTML , CSS .
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+
+Clone this repository in Github Desktop / Git
+
+```bash
+https://github.com/Bit-Binary-2027/CraftNCode.git
+```
+
+## SetUp The Project 
+
+Install the node modules 
+``` bash 
+npm install 
+```
+
+## Start the Development Server 
+
+```bash 
+npm run dev 
+```
+This would open the project in your Local Host 5173 (since this is VITE Project)
+
+
+## Badges
+
+Add badges from somewhere like: [shields.io](https://shields.io/)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
+## Acknowledgements
+
+ - [Read React Docs ](https://react.dev/learn)
+ - [Read Tailwind Docs](https://tailwindcss.com/docs/installation)
+ - [Read JavaScript Docs](https://www.w3schools.com/js/DEFAULT.asp)
