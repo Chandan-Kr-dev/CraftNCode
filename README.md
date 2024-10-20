@@ -10,7 +10,7 @@ This is our OFFICIAL Repository for CraftNCode Hackathon
 Clone this repository in Github Desktop / Git
 
 ```bash
-https://github.com/DevSapta27/GDG-ON-CAMPUS.git
+https://github.com/Bit-Binary-2027/CraftNCode.git
 ```
 
 ## SetUp The Project 
