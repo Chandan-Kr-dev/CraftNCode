@@ -1,4 +1,5 @@
 import React from 'react'
+import HeroImage from '../assets/images/hero.jpg'
 
 const hero = () => {
   return (
@@ -15,6 +16,9 @@ const hero = () => {
       <div className='hero-buttons'>
         <button className='btn-1-hero'>Start Free Trial</button>
         <button className='btn-2-hero'>Try TruthMate</button>
+      </div>
+      <div className='hero-image mt-20 mb-24'>
+        <img src={HeroImage} alt='No Image Found'></img>
       </div>
     </div>
   )
