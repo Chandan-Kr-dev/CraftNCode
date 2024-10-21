@@ -5,6 +5,8 @@ This is our OFFICIAL Repository for CraftNCode Hackathon
 
 **Client:** React,  TailwindCSS , JavaScript , HTML , CSS .
 
+## Fork the Repo and then Start Clone , always create a New Branch for PR 
+
 ## Installation
 
 Clone this repository in Github Desktop / Git
