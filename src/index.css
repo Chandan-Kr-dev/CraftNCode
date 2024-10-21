@@ -195,3 +195,14 @@ body {
   color: gray;
   border: 1px solid rgba(128, 128, 128, 0.674);
 }
+.hero-image img {
+   border-radius: 42px;
+   transition: all 0.8s ease;
+}
+.hero-image {
+  border: 2px solid rgba(128, 128, 128, 0.204);
+  border-radius: 42px;
+}
+.hero-image img:hover {
+  transform: scale(1.1);
+}
