@@ -36,7 +36,7 @@ const WorkFlowCard = ({ image, Title, Description }) => {
   )
 }
 
-const workflow = () => {
+const Workflow = () => {
   return (
     <div>
       <div className='workflow-heading'>
@@ -53,4 +53,4 @@ const workflow = () => {
   )
 }
 
-export default workflow
+export default Workflow
