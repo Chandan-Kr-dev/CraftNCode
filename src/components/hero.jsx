@@ -9,7 +9,7 @@ const hero = () => {
         className='announcement-box'
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8}}
       >
         <p>🚀 New Feature : Verify Facts in Code-mixed Language 🔥</p>
       </motion.div>
@@ -32,9 +32,9 @@ const hero = () => {
       
       <motion.div 
         className='hero-buttons'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
+        initial={{ opacity: 0 , scale: 0.8}}
+        animate={{ opacity: 1 , scale: 1 }}
+        transition={{ duration: 1}}
       >
         <motion.button 
           className='btn-1-hero'
