@@ -2,7 +2,7 @@ import React from 'react';
 import HeroImage from '../assets/images/hero.jpg';
 import { motion } from 'framer-motion';
 
-const hero = () => {
+const Hero = () => {
   return (
     <div className='hero'>
       <motion.div 
@@ -64,4 +64,4 @@ const hero = () => {
   );
 }
 
-export default hero;
+export default Hero;
