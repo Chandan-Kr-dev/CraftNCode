@@ -206,3 +206,80 @@ body {
 .hero-image img:hover {
   transform: scale(1.1);
 }
+.workflow-heading {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workflow-heading p {
+  color: gray;
+  font-weight: 500;
+}
+.workflow-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.workflow-card {
+   width: 350px;
+   height:400px;
+   padding: 20px 20px;
+   margin: 30px 30px;
+   border: 1px solid rgba(128, 128, 128, 0.204);
+   border-radius: 12px;
+   transition: all 0.5s ease;
+}
+.workflow-card-tile {
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 1.5rem;
+  text-align: center;
+  align-content: center;
+  font-weight: 500;
+  
+}
+.workflow-card-description {
+  color: gray;
+  font-size: 1rem;
+  text-align: center;
+  align-content: center;
+  font-weight: 400;
+}
+.workflow-card:hover {
+   transform: scale(1.1);
+   border: 1px solid #114fee;
+}
+
+/*Testanomials*/
+.testanomials {
+  overflow: hidden;
+}
+.testanomial-card {
+  border-radius: 12px;
+  border: 2px solid rgba(128, 128, 128, 0.289);
+  transition: all 0.6s ease;
+  margin: 10px 10px;
+}
+.testanomial-text {
+  color: gray;
+  font-size: 0.9rem;
+}
+.testanomial-name {
+  color: rgba(255, 255, 255, 0.799);
+
+}
+.testanomial-role {
+  color: rgba(255, 255, 255, 0.799);
+  
+}
+.testanomial-card:hover {
+  border: 1px solid #114fee;
+  transform: scale(1.1);
+}
