@@ -283,3 +283,41 @@ body {
   border: 1px solid #114fee;
   transform: scale(1.1);
 }
+.footer-logo-section {
+  display: flex;
+  height : 50px ;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: -80px;
+}
+.footer-logo-section img {
+  height : 50px ;
+  width : 50px;
+  margin-left: 10px;
+}
+.footer-logo-section a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.footer-moto {
+  display: flex;
+ 
+  flex-direction: column;
+
+}
+.footer-moto h1 {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.896);
+  margin-top: -6px;
+  margin-left: -14px;
+  font-weight: 600;
+}
+.footer-moto p {
+  font-size: 0.9rem;
+  color: grey;
+  margin-top: 10px;
+  margin-left: -14px;
+}
