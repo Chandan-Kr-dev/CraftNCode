@@ -5,7 +5,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navbar-box">
         <div className="navbar-logo-section">
-          <a href="/">TrueMixi</a>
+          <a href="/">TrueMix</a>
           <img src={Logo} alt="No Image Found"></img>
         </div>
         <div className="navbar-links">
