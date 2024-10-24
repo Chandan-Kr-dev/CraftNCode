@@ -354,3 +354,54 @@ body {
 .form-border {
   border-radius: 4px;
 }
+.text-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main-verify-box {
+  display: flex;
+  
+  flex-direction: column;
+}
+.main-textarea {
+  border-radius: 12px;
+  border: 1px solid #114fee;
+  background-color: black;
+  width: 750px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.verify-button {
+  width : 200px;
+  
+}
+.main-verify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  font-family: 'Poppins';
+}
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-bottom: 25px;
+}
+.main-result-box{
+  border-radius: 12px;
+  border: 1px solid #114fee;
+  background-color: black;
+  width: 500px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Poppins';
+}
+ 
+
