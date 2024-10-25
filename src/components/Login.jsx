@@ -1,26 +1,32 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
+import { auth } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
-  });
+ const [Email, setEmail] = useState("")
+ const [Password, setPassword] = useState("")
+ const [showPassword, setShowPassword] = useState(false)
+ const [rememberMe, setrememberMe] = useState(null)
+ 
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
+ const [Error, setError] = useState("")
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-  };
+ const navigate=useNavigate()
+
+ const handleSubmit=async(e)=>{
+  e.preventDefault();
+  try {
+    setError("")
+    const UserCred=await signInWithEmailAndPassword(auth,Email,Password)
+    console.log(UserCred)
+    navigate("/")
+  } catch (error) {
+
+    setError("Wrong Email or Password")
+    console.error(error.message)
+  }
+ }
 
   return (
     <div className="flex min-h-screen items-center justify-center background-login">
@@ -38,9 +44,9 @@ const LoginForm = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full rounded-md border border-gray-300 py-2 pl-10 pr-4 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              value={Email}
+              onChange={e=>setEmail(e.target.value)}
+              className="w-full text-black rounded-md border border-gray-300 py-2 pl-10 pr-4 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
               placeholder="Enter your Email"
             />
           </div>
@@ -58,9 +64,9 @@ const LoginForm = () => {
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="w-full rounded-md border border-gray-300 py-2 pl-10 pr-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              value={Password}
+              onChange={e=>setPassword(e.target.value)}
+              className="w-full text-black rounded-md border border-gray-300 py-2 pl-10 pr-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
               placeholder="Enter your Password"
             />
             <button
@@ -81,8 +87,8 @@ const LoginForm = () => {
             <input
               type="checkbox"
               name="rememberMe"
-              checked={formData.rememberMe}
-              onChange={handleInputChange}
+              checked={rememberMe}
+              onChange={e=>setrememberMe(e.target.checked)}
               className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
             />
             <label className="ml-2 text-sm text-gray-400">Remember me</label>
@@ -99,6 +105,9 @@ const LoginForm = () => {
         >
           Sign In
         </button>
+        <div className='text-center'>
+          <span className='text-red-600 text-xs'>{Error}</span>
+        </div>
 
         {/* Sign Up Link */}
         <p className="text-center text-sm text-gray-400">
