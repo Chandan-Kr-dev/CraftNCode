@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import axios from "axios";
 const RegistrationForm = () => {
   const [FName, setFName] = useState("");
   const [LName, setLName] = useState("");
@@ -10,34 +12,23 @@ const RegistrationForm = () => {
   const [password, setpassword] = useState("");
 
   const [error, seterror] = useState("");
-  const [isPasswordValid, setisPasswordValid] = useState(false);
+
   const [Loader, setLoader] = useState(false);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password === CPassword) {
-      seterror("");
-      setLoader(true);
-      createUserWithEmailAndPassword(auth, Email, password)
-        .then((userCredentials) => {
-          console.log(userCredentials);
-          navigate("/")
-          window.location.reload()
-        })
-        .catch((error) => {
-          if (password.length <= 6) {
-            seterror("Password must be at least 6 characters");
-          }
-          console.log(error);
-        });
-      setLoader(false);
-    } else {
-      seterror("Both password should match");
-      return;
+  const handleSubmit =  (e) => {
+    e.preventDefault()
+    const Username=FName+" "+LName
+    try {
+      axios.post(`${import.meta.env.VITE_DEV_URL}users/signup`,{Username,Email,password})
+      .then(res=>{
+        console.log(res)
+      })
+    } catch (error) {
+      
     }
-  };
+  }
 
   return (
     <div className="min-h-screen register-background flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
