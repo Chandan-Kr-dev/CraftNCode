@@ -11,12 +11,14 @@
 }
 
 body {
-  background-color: black;
+  background-color: #00040f;
   width: 100%;
   height: auto;
   font-family: "Poppins", sans-serif;
 }
-
+.testanomial-icon{
+  border: 1px solid gray;
+}
 .navbar {
   width: 80%;
   display: flex;

@@ -131,14 +131,14 @@ const Testimonials = () => {
 
         <button
           onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50"
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-black p-2 border-blue-700 rounded-full shadow-lg testanomial-icon"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
 
         <button
           onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50"
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-black p-2 rounded-full shadow-lg testanomial-icon"
         >
           <ChevronRight className="h-6 w-6" />
         </button>
