@@ -443,3 +443,34 @@ body {
   right: 5px;
   top: 750px;
 }
+.messages{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 300px;
+  padding-top: 30px;
+}
+
+.messages .userMsg{
+  clear: both;
+  background-color: #181818;
+  padding: 15px;
+  border-radius: 30px;
+  max-width: 60vw;
+  align-self: flex-end;
+  min-width: 20vw;
+}
+
+.messages .responseMsg{
+  clear: both;
+  background-color: #181818;
+  padding: 15px;
+  border-radius: 30px;
+  max-width: 60vw;
+  align-self: flex-start;
+  min-width: 20vw;
+  margin-top: 15px;
+}
+.chatbot-box {
+  border: 1px solid #c084fc;
+  
+}
