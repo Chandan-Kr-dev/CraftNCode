@@ -2,31 +2,33 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginForm = () => {
  const [Email, setEmail] = useState("")
  const [Password, setPassword] = useState("")
  const [showPassword, setShowPassword] = useState(false)
- const [rememberMe, setrememberMe] = useState(null)
+ const [rememberMe, setrememberMe] = useState(false)
  
 
  const [Error, setError] = useState("")
 
  const navigate=useNavigate()
 
- const handleSubmit=async(e)=>{
-  e.preventDefault();
-  try {
-    setError("")
-    const UserCred=await signInWithEmailAndPassword(auth,Email,Password)
-    console.log(UserCred)
-    navigate("/")
-  } catch (error) {
-
-    setError("Wrong Email or Password")
-    console.error(error.message)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      axios.post(`${import.meta.env.VITE_DEV_URL}users/login`,{Email,Password})
+      .then(res=>{
+        console.log(res)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    } catch (error) {
+        console.error(error)
+    }
   }
- }
 
   return (
     <div className="flex min-h-screen items-center justify-center background-login">

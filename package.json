@@ -10,10 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-
-    "dotenv": "^16.4.5",
-    "firebase": "^11.0.1",
-
     "@coreui/coreui": "^5.1.2",
     "@coreui/icons": "^3.0.1",
     "@coreui/react": "^5.4.0",
@@ -21,7 +17,9 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.5",
-
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "firebase": "^11.0.1",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
