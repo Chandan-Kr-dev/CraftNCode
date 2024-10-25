@@ -3,6 +3,10 @@ import { Loader2 } from 'lucide-react';
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 
+import Main2 from '../assets/images/main2.png'
+
+import Main4 from '../assets/images/main4.png'
+
 const FactCheckerForm = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('english');
   const [factText, setFactText] = useState('');
@@ -33,8 +37,14 @@ const FactCheckerForm = () => {
       <Navbar />
       <div className="main">
         <div>
-          <h2 className="text-4xl lg:text-6xl my-4 mt-12 py-4 font-semibold tracking-tighter bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700 bg-clip-text text-transparent flex justify-center items-center text-main ">Bridging Languages,</h2><p className="-mt-8 text-6xl py-4 font-semibold tracking-tighter bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700 bg-clip-text text-transparent flex justify-center items-center text-main ">Uniting Truth</p>
-
+          <h1 className='text-3xl lg:text-5xl my-4 mt-12 py-4 font-semibold tracking-tighter bg-gradient-to-b from-neutral-50 via-neutral-300 to-neutral-700 bg-clip-text text-transparent  text-center'>Speak Any Language</h1>
+          <h2 className="text-4xl font-bold text-center text-purple-400 mb-16 -mt-1">
+            Check-Fact with us !
+          </h2>
+           <img src={Main4} className=' main1' />
+           <img src={Main2} className=' main2' />
+           
+       
           <form onSubmit={handleVerifyFact}>
             {/* Language Selection */}
             <div className="mb-6 ">
@@ -55,7 +65,7 @@ const FactCheckerForm = () => {
                     />
                     <label
                       htmlFor={language}
-                      className="ml-2 text-gray-500 capitalize"
+                      className="ml-2 text-purple-400 capitalize"
                     >
                       {language}
                     </label>
@@ -69,7 +79,7 @@ const FactCheckerForm = () => {
               <div className="mb-6 main-verify-box ">
                 <label
                   htmlFor="fact"
-                  className="text-gray-400 text-lg font-medium mb-2 block"
+                  className="text-gray-200 text-lg font-medium mb-2 block"
                 >
                   Enter Fact to Verify
                 </label>
@@ -109,6 +119,8 @@ const FactCheckerForm = () => {
 
           {/* Results Section */}
           {result && !isLoading && (
+            <>
+               
             <div className="result-container">
               <div className="mt-6 p-4  rounded-lg main-result-box">
                 <h3 className="font-medium text-2xl mb-2">Verification Result:</h3>
@@ -130,12 +142,13 @@ const FactCheckerForm = () => {
                 </div>
               </div>
             </div>
+            </>
           )}
 
         </div>
       </div >
-   
-   
+
+
 
       <Footer />
     </>
