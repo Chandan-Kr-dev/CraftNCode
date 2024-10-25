@@ -48,7 +48,7 @@ const Hero = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          Try TruthMate
+          Play Games
         </motion.button>
       </motion.div>
       
