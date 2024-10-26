@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import { GoogleAuthProvider, OAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../../firebase';
+
 const LoginForm = () => {
  const [Email, setEmail] = useState("")
  const [Password, setPassword] = useState("")
@@ -16,6 +19,34 @@ const LoginForm = () => {
 
  const navigate=useNavigate()
 
+ const provider1=new GoogleAuthProvider()
+ provider1.addScope('https://www.googleapis.com/auth/contacts.readonly');
+ const GoogleLogin=()=>{
+  try {
+    signInWithPopup(auth,provider1)
+    .then(async(res)=>{
+      console.log(res)
+      window.localStorage.setItem("Username",res.user.displayName)
+      navigate('/')
+    })
+  } catch (error) {
+    console.log(error)
+  }
+ }
+
+ const provider2=new OAuthProvider('apple.com')
+ const AppleLogin=async()=>{
+  try {
+    await signInWithPopup(auth,OAuthProvider)
+    .then(async(res)=>{
+      console.log(res)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+ }
+ 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
@@ -23,9 +54,10 @@ const LoginForm = () => {
       axios.post(`${import.meta.env.VITE_DEV_URL}users/login`,{Email,Password})
       .then(res=>{
         console.log(res.data)
-        if(res.data=="Success"){
+        if(res.data.message=="Success"){
           setLoader(false)
           alert("Login Successful")
+          window.localStorage.setItem("Username",res.data.user.Name)
           navigate('/')
 
         }else{
@@ -144,6 +176,7 @@ const LoginForm = () => {
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
+            onClick={GoogleLogin}
             className="flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             <svg width="20" height="20" viewBox="0 0 512 512">
@@ -156,6 +189,7 @@ const LoginForm = () => {
           </button>
           <button
             type="button"
+            onClick={AppleLogin}
             className="flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             <svg width="20" height="20" viewBox="0 0 22.773 22.773">

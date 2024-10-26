@@ -24,6 +24,7 @@ const RegistrationForm = () => {
       .then(res=>{
         console.log(res)
         alert("User Registered Successfully")
+        window.localStorage.setItem("Username",FName)
         navigate("/")
       })
     } catch (error) {
