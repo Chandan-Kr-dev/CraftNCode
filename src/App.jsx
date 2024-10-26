@@ -6,7 +6,7 @@ import Docs from "./components/Docs";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import TruthMate from "./components/TruthMate";
-import News from "./components/news";
+import News from "./components/News";
 import Main from "./components/Main";
 const App = () => {
   return (
