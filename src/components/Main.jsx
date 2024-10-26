@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Loader2 } from 'lucide-react';
-import Navbar from '../components/navbar'
+import Navbar from './Navbar'
 import Footer from '../components/Footer'
 import { ChevronDown } from 'lucide-react';
 import Main2 from '../assets/images/main2.png'
