@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import Navbar from './navbar'
+import Footer from '../components/Footer'
 import { ChevronDown } from 'lucide-react';
 import { Search } from 'lucide-react';
 import  { useState } from 'react';

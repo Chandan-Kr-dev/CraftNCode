@@ -1,8 +1,8 @@
 import React from "react";
-import Hero from './Hero';
-import Workflow from "./Workflow";
-import Testimonials from "./Testanomials";
-import Navbar from "./Navbar";
+import Hero from '../components/hero'
+import Workflow from './workflow'
+import Testimonials from '../components/Testanomials'
+import Navbar from  './navbar'
 import Footer from '../components/Footer'
 
 const Home = () => {
