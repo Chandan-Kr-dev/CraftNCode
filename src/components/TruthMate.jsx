@@ -4,7 +4,7 @@ import { IoCodeSlash, IoSend } from 'react-icons/io5'
 import { BiPlanet } from 'react-icons/bi'
 import { FaPython } from 'react-icons/fa'
 import { TbMessageChatbot } from 'react-icons/tb'
-import Navbar from './navbar'
+import Navbar from './Navbar'
 import Footer from './Footer'
 
 const TruthMate = () => {
