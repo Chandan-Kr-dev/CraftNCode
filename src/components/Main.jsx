@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import Main2 from '../assets/images/main2.png'
 
 import Main4 from '../assets/images/main4.png'
+import axios from 'axios';
 
 const FactCheckerForm = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('english');
@@ -19,12 +20,18 @@ const FactCheckerForm = () => {
 
     // Simulate API call - replace with actual fact-checking logic
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      setIsLoading(true)
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/factscheck`,{factText})
+      .then(res=>{
+        console.log(res)
+        
+      })
       setResult({
         isVerified: true,
         confidence: 0.85,
         sources: ['Source 1', 'Source 2']
       });
+      // setIsLoading(false)
     } catch (error) {
       console.error('Error verifying fact:', error);
     } finally {

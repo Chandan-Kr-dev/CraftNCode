@@ -2,6 +2,7 @@ import express from 'express';
 import UserRouter from './routes/userRoutes.js';
 import cors from 'cors'
 import connectdb from './db/index.js';
+import FactRouter from './routes/FactRoutes.js';
 
 
 const app = express()
@@ -25,6 +26,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users',UserRouter)
+
+app.use('/api',FactRouter)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

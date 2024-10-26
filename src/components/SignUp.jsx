@@ -23,9 +23,11 @@ const RegistrationForm = () => {
       axios.post(`${import.meta.env.VITE_DEV_URL}users/signup`,{Username,Email,password})
       .then(res=>{
         console.log(res)
+        alert("User Registered Successfully")
+        navigate("/")
       })
     } catch (error) {
-      
+      seterror("Failed to register. Please try again later.")
     }
   }
 
