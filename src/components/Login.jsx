@@ -12,15 +12,25 @@ const LoginForm = () => {
  
 
  const [Error, setError] = useState("")
+ const [Loader, setLoader] = useState(false)
 
  const navigate=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      setLoader(true)
       axios.post(`${import.meta.env.VITE_DEV_URL}users/login`,{Email,Password})
       .then(res=>{
-        console.log(res)
+        console.log(res.data)
+        if(res.data=="Success"){
+          setLoader(false)
+          alert("Login Successful")
+          navigate('/')
+
+        }else{
+          setError(res.data)
+        }
       })
       .catch(err=>{
         console.log(err)
@@ -28,6 +38,7 @@ const LoginForm = () => {
     } catch (error) {
         console.error(error)
     }
+    
   }
 
   return (
@@ -102,10 +113,12 @@ const LoginForm = () => {
 
         {/* Sign In Button */}
         <button
+        disabled={Loader==true}
           type="submit"
           className="w-full rounded-md bg-blue-600 py-2 text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Sign In
+          {Loader ? (<span>Signing in</span>):(<span>Sign In</span>)}
+        
         </button>
         <div className='text-center'>
           <span className='text-red-600 text-xs'>{Error}</span>
