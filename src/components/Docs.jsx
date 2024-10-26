@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navbar from './Navbar';
+import Navbar from './navbar';
 import Footer from './Footer';
 import { MdImageSearch } from "react-icons/md";
 import { FaLanguage } from "react-icons/fa";

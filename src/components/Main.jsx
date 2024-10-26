@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Loader2 } from 'lucide-react';
-import Navbar from './Navbar';
+import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
 import { ChevronDown } from 'lucide-react';
 import Main2 from '../assets/images/main2.png'
@@ -8,7 +8,7 @@ import Main2 from '../assets/images/main2.png'
 import Main4 from '../assets/images/main4.png'
 import axios from 'axios';
 
-const FactCheckerForm = () => {
+const Main = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('english');
   const [factText, setFactText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -178,4 +178,4 @@ const FactCheckerForm = () => {
   );
 };
 
-export default FactCheckerForm;
+export default Main;
