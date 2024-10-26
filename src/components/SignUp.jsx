@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { auth, db } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+
 import axios from "axios";
 const RegistrationForm = () => {
   const [FName, setFName] = useState("");
