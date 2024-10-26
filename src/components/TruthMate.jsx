@@ -5,7 +5,7 @@ import { BiPlanet } from 'react-icons/bi'
 import { FaPython } from 'react-icons/fa'
 import { TbMessageChatbot } from 'react-icons/tb'
 import Navbar from './navbar'
-import Footer from './Footer'
+import Footer from '../components/Footer'
 
 const TruthMate = () => {
   const [message, setMessage] = useState("");
