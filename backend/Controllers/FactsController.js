@@ -1,40 +1,51 @@
-import express from "express";
+const { Translate } = require("@google-cloud/translate").v2;
+const dotenv = require("dotenv");
+dotenv.config();
+const axios = require("axios");
 
-import axios from "axios";
-import { Facts } from "../models/Facts.models.js";
+const detectLanguage = async (req, res) => {
+  const {factText}=req.body;
+  console.log(factText)
 
+  try {
+    const response=await axios.post('http://localhost:5000/predict',{
+      input:factText
+    });
+    console.log(response.data)
+  } catch (error) {
+    console.error(error)
 
-const LINGVA_API_URL = process.env.LINGVA_API_URL;
-
-const detectLanguage = async (text) => {
-    
-    try {
-        const response = await axios.get(`${LINGVA_API_URL}/api/v1/detect/${encodeURIComponent(text)}`);
-        console.log(response)
-        if(response.data &&response.data.language){
-
-            return response.data.language;  // Returns the language code
-        }
-        else{
-            res.status(500).json({message:"Language cannot be detected"})
-        }
-      } catch (error) {
-        console.error("Error detecting language:", error);
-        throw error;
-      }
+  }
 };
 
+// Translate to English
+const translateToEnglish = async (req, res) => {
+  const { text, sourceLang } = req.body;
 
-
-
-const translateToEnglish = async (text,sourceLang) => {
-    try {
-        const response = await axios.get(`${LINGVA_API_URL}/api/v1/${sourceLang}/en/${encodeURIComponent(text)}`);
-        return response.data.translation;
-      } catch (error) {
-        console.error("Error translating text:", error);
-        throw error;
+  try {
+    const response = await axios.post(
+      "https://deep-translate1.p.rapidapi.com/language/translate/v2",
+      {
+        q: text,
+        source: sourceLang,
+        target: "en",
+      },
+      {
+        headers: {
+          "content-type": "application/json",
+          "X-RapidAPI-Key": process.env.RAPID_API_KEY,
+          "X-RapidAPI-Host": "deep-translate1.p.rapidapi.com",
+        },
       }
+    );
+
+    res.json({
+      translatedText: response.data.data.translations.translatedText,
+    });
+  } catch (error) {
+    console.error("Translation API error:", error.message);
+    res.status(500).json({ error: "Translation failed" });
+  }
 };
 
 const factCheckClaim = async (claim) => {
@@ -46,4 +57,4 @@ const factCheckClaim = async (claim) => {
   return response.data;
 };
 
-export default { detectLanguage, translateToEnglish, factCheckClaim };
+module.exports = { detectLanguage, translateToEnglish, factCheckClaim };

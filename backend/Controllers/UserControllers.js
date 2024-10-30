@@ -1,5 +1,7 @@
-import { Users } from "../models/users.models.js";
-import bcrypt from "bcryptjs";
+
+const {Users} = require("../models/users.models.js");
+
+const bcrypt=require("bcryptjs");
 
 const login = async (req, res) => {
   const { Email, Password } = req.body;
@@ -48,5 +50,5 @@ const signup = async (req, res) => {
   }
 };
 
-export default { login, signup };
+module.exports= { login, signup };
 // export default signup;

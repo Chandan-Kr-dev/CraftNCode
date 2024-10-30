@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "firebase.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "nodemon app.js"
   },
@@ -20,6 +20,7 @@
     "express": "^4.21.1",
     "mongodb": "^6.10.0",
     "mongoose": "^8.7.2",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "transformers": "^1.8.3"
   }
 }

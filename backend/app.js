@@ -1,8 +1,11 @@
-import express from 'express';
-import UserRouter from './routes/userRoutes.js';
-import cors from 'cors'
-import connectdb from './db/index.js';
-import FactRouter from './routes/FactRoutes.js';
+const express=require('express')
+
+
+const UserRouter =require('./routes/userRoutes.js')
+
+const cors=require('cors')
+const connectdb=require('./db/index.js')
+const FactRouter=require('./routes/FactRoutes.js')
 
 
 const app = express()
