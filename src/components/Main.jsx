@@ -16,21 +16,25 @@ const Main = () => {
 
   const handleVerifyFact = async (e) => {
     e.preventDefault();
+
+   
+
     setIsLoading(true);
 
     // Simulate API call - replace with actual fact-checking logic
     try {
       setIsLoading(true)
-      axios.post(`${import.meta.env.VITE_DEV_URL}api/factscheck`, { factText })
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText })
         .then(res => {
           console.log(res)
+          setResult({
+            isVerified: true,
+            confidence: 0.85,
+            sources: ['Source 1', 'Source 2']
+          });
 
         })
-      setResult({
-        isVerified: true,
-        confidence: 0.85,
-        sources: ['Source 1', 'Source 2']
-      });
+      
       // setIsLoading(false)
     } catch (error) {
       console.error('Error verifying fact:', error);

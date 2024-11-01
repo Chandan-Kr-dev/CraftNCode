@@ -1,27 +1,24 @@
-import express from 'express';
+const express = require("express");
 
-const FactRouter=express.Router();
+const FactRouter = express.Router();
 
-import FactsController from '../Controllers/FactsController.js';
+const FactsController = require("../Controllers/FactsController.js");
+const Facts = require("../models/Facts.models.js");
+
+FactRouter.post("/detect",async(req,res)=>{
+    const {factText}=req.body;
+    console.log(factText)
+    const language=await FactsController.detectLanguage(factText);
+    console.log(language)
+
+    const translatedtoEnglish=await FactsController.translateToEnglish(factText);
+    console.log(translatedtoEnglish)
+
+    const response=await FactsController.factCheckClaim(translatedtoEnglish);
+    console.log(response)
 
 
-FactRouter.post('/factscheck', async (req, res) => {
-    console.log(req.body)
-    try {
-      const { factText } = req.body;
-      const language = await FactsController.detectLanguage(factText);
-      let factTextInEnglish = factText;
-  
-      if (language !== 'en') {
-        factTextInEnglish = await FactsController.translateToEnglish(factText,language);
-      }
-  
-      const factCheckResult = await FactsController.factCheckfactText(factTextInEnglish);
-      res.status(200).json({ originalfactText: factText, translatedfactText: factTextInEnglish, factCheckResult });
-    } catch (error) {
-      console.error("Error in factText submission:", error);
-      res.status(500).json({ message: "Error processing factText." });
-    }
-  });
 
-export default FactRouter;
+});
+
+module.exports = FactRouter;
