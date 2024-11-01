@@ -1,60 +1,45 @@
-const { Translate } = require("@google-cloud/translate").v2;
 const dotenv = require("dotenv");
 dotenv.config();
 const axios = require("axios");
 
-const detectLanguage = async (req, res) => {
-  const {factText}=req.body;
-  console.log(factText)
+const { translate } = require("@vitalets/google-translate-api");
 
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const detectLanguage = async (text) => {
+  console.log(text);
   try {
-    const response=await axios.post('http://localhost:5000/predict',{
-      input:factText
+    const response = await axios.post("http://localhost:5000/predict", {
+      input: text,
     });
-    console.log(response.data)
+    console.log(response.data.prediction);
+    return response.data.prediction;
   } catch (error) {
-    console.error(error)
-
+    console.error(error);
   }
 };
 
 // Translate to English
-const translateToEnglish = async (req, res) => {
-  const { text, sourceLang } = req.body;
-
+const translateToEnglish = async (text) => {
   try {
-    const response = await axios.post(
-      "https://deep-translate1.p.rapidapi.com/language/translate/v2",
-      {
-        q: text,
-        source: sourceLang,
-        target: "en",
-      },
-      {
-        headers: {
-          "content-type": "application/json",
-          "X-RapidAPI-Key": process.env.RAPID_API_KEY,
-          "X-RapidAPI-Host": "deep-translate1.p.rapidapi.com",
-        },
-      }
-    );
-
-    res.json({
-      translatedText: response.data.data.translations.translatedText,
+    const translatedLang = await translate(text, {
+      to: "en",
     });
+
+    return translatedLang.text;
   } catch (error) {
-    console.error("Translation API error:", error.message);
-    res.status(500).json({ error: "Translation failed" });
+    console.error(error);
   }
 };
 
 const factCheckClaim = async (claim) => {
-  const apiKey = process.env.GOOGLE_FACT_CHECK_API_KEY;
-  const encodedClaim = encodeURIComponent(claim);
-  const response = await axios.get(
-    `https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodedClaim}&key=${apiKey}`
-  );
-  return response.data;
+  const response = await axios.post("https://serpapi.com/search", {
+    engine:"google",
+    q:claim,
+    api_key:process.env.SEARCH_API_KEY,
+  });
+  console.log(response.message)
+  return response.message;
 };
 
 module.exports = { detectLanguage, translateToEnglish, factCheckClaim };
