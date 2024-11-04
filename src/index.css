@@ -452,23 +452,28 @@ body {
 
 .messages .userMsg{
   clear: both;
-  background-color: #181818;
-  padding: 15px;
+  background-color: #00040f;
+  padding: 10px;
   border-radius: 30px;
   max-width: 60vw;
   align-self: flex-end;
   min-width: 20vw;
+  border: 1px solid #c084fc;
+  font-size: 0.9rem;
+  margin-top: 10px;
 }
 
 .messages .responseMsg{
   clear: both;
-  background-color: #181818;
-  padding: 15px;
+  background-color: #00040f;
+  padding: 10px;
   border-radius: 30px;
   max-width: 60vw;
   align-self: flex-start;
   min-width: 20vw;
   margin-top: 15px;
+  border: 1px solid #c084fc;
+  font-size: 0.8rem;
 }
 .chatbot-box {
   border: 1px solid #c084fc;
@@ -502,8 +507,7 @@ body {
   padding: 10px 10px;
   margin: 7px 7px;
   width : 85%;
-  min-height: 700px;
-  max-height: 1000px;
+
   border: 1px solid #c084fc;
   border-radius: 12px;
 }
@@ -533,4 +537,108 @@ body {
   right: 50px;
   top: 120px;
  
+}
+.new-chat {
+  border: 1px solid #c084fc;
+}
+.chat-heading {
+  border: 1px solid #c084fc;
+}
+
+/*newsapp*/
+
+
+.searchBar{
+display: flex;
+align-items: center;
+justify-content: center;
+align-items: center;
+gap: 11px;
+background-color: #00040f;
+}
+
+.searchBar input {
+  background-color: #00040f;
+  border: 1px solid #c084fc;
+  border-radius: 8px;
+  padding: 8px 8px;
+}
+.cardContainer{
+display: flex;
+justify-content: center;
+flex-direction: row;
+flex-wrap: wrap;
+margin-top: 25px;
+
+}
+
+.card{
+width: 300px;
+height: auto;
+
+background-color: #00040f;
+border-radius: 10px;
+margin: 20px 20px;
+border: 1px solid #c084fc;
+}
+.card img{
+width: 100%;
+height: 170px;
+
+border-radius: 10px;
+}
+.card .title{
+font-weight: 500;
+font-size: 1rem;
+
+}
+.card .title:hover{
+border-bottom: 1px solid black;
+cursor: pointer;
+}
+.card .content{
+padding: 9px;
+}
+.card button{
+background-color: #00040f;
+border: none;
+cursor: pointer;
+width: 80px;
+height: 28px;
+color: #c084fc;
+font-size: 13px;
+border-radius: 2px;
+}
+.categoryBtn{
+display: flex;
+justify-content: center;
+gap: 11px;
+}
+.categoryBtn button{
+gap: 11px;
+width: 130px;
+height: 33px;
+background-color: rgb(255, 108, 108);
+border: none;
+outline: none;
+font-size: 18px;
+border-radius: 16px;
+color: white;
+cursor: pointer;
+padding: 2px;
+}
+
+
+.head{
+text-align: center;
+font-weight: 600;
+font-size: 26px;
+}
+.card-title {
+  font-size: 1rem;
+  padding: 10px 10px ;
+}
+.card-para {
+  font-size: 0.8rem;
+  margin-top: 6px;
 }

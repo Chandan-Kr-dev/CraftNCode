@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { GoogleGenerativeAI } from"@google/generative-ai";
 import { IoCodeSlash, IoSend } from 'react-icons/io5'
 import { BiPlanet } from 'react-icons/bi'
 import { FaPython } from 'react-icons/fa'
@@ -26,7 +26,7 @@ const TruthMate = () => {
   const generateResponse = async (msg) => {
     if (!msg) return;
     
-    const genAI = new GoogleGenerativeAI("YOUR_API_KEY_HERE");
+    const genAI = new GoogleGenerativeAI("AIzaSyBzo0JrSuYkSKqGW4QZtv5ETLLiY4EkvAc");
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(msg);
     
@@ -55,15 +55,15 @@ const TruthMate = () => {
           isResponseScreen ?
             <div className='h-[80vh]'>
               <div className="header pt-[25px] flex items-center justify-between w-[100vw] px-[300px]">
-                <h2 className='text-2xl'>TruthMate</h2>
-                <button id='newChatBtn' className='bg-[#181818] p-[10px] rounded-[30px] cursor-pointer text-[14px] px-[20px]' onClick={newChat}>New Chat</button>
+                <h2 className='text-1xl chat-heading bg-[#00040f] p-[10px] rounded-[30px] cursor-pointer px-[20px]'>TruthMate</h2>
+                <button id='newChatBtn' className='bg-[#00040f] p-[10px] rounded-[30px] cursor-pointer text-[14px] px-[20px] new-chat' onClick={newChat}>New Chat</button>
               </div>
 
-              <div className="messages">
+              <div className="messages overflow-y-auto max-h-[60vh]">
               {
                 messages?.map((msg, index) => {
                   return (
-                    <div key={index} className={msg.type}>{msg.text}</div>
+                    <div key={index} className={msg.type }>{msg.text}</div>
                   )
                 })
               }
