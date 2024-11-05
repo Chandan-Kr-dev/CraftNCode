@@ -16,7 +16,7 @@ const Gamification = () => {
       </div>
       <div className='games-quizes mt-10'>
         {/*Game Feature*/}
-        <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0">
+        <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0 p-12">
 
           <div className=" flex-col mx-8 p-6 rounded-lg border max-w-xl h-auto items-center align-middle justify-center flex">
             <h1 className='text-3xl text-purple-400 text-center font-semibold p-6'>Decode Truths, Unlock Levels!</h1>
@@ -27,13 +27,13 @@ const Gamification = () => {
           </div>
 
           <div className="flex-shrink-0 mx-8 ">
-            <img src={Gmf1} alt="Firefighter Illustration" className="w-96 h-96 object-contain ml-6" />
+            <img src={Gmf1} alt="Firefighter Illustration" className="w-72 h-72 object-contain ml-6" />
           </div>
         </div>
         {/*Quizes Features*/}
         <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0">
           <div className="flex-shrink-0 mx-8 ">
-            <img src={Gmf2} alt="Firefighter Illustration" className="w-96 h-96 object-contain ml-6" />
+            <img src={Gmf2} alt="Firefighter Illustration" className="w-72 h-72 object-contain ml-6" />
           </div>
           <div className=" flex-col mx-8 p-6 rounded-lg border max-w-xl h-auto items-center align-middle justify-center flex">
             <h1 className='text-2xl text-purple-400 text-center font-semibold p-6'>Test Your Knowledge, Verify the World!</h1>
@@ -51,7 +51,7 @@ const Gamification = () => {
         </div>
         <div className='rewards-section'>
           {/* Certificate Section */}
-          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0">
+          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0 p-12">
 
             <div className=" flex-col mx-8 p-6 rounded-lg border max-w-xl h-auto items-center align-middle justify-center flex">
               <h1 className='text-2xl text-purple-400 text-center font-semibold p-3'>Complete Challenges, Win Certificates!</h1>
@@ -61,14 +61,14 @@ const Gamification = () => {
               <button className='btn-1-hero mt-4'>Demo Certificate</button>
             </div>
             <div className="flex-shrink-0 mx-8 ">
-              <img src={Gmf3} alt="Firefighter Illustration" className="w-96 h-96 object-contain ml-6" />
+              <img src={Gmf3} alt="Firefighter Illustration" className="w-72 h-72 object-contain ml-6" />
             </div>
 
           </div>
           {/* Coupouns Section */}
-          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0">
+          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0 p-12">
             <div className="flex-shrink-0 mx-8 ">
-              <img src={Gmf5} alt="Firefighter Illustration" className="w-96 h-96 object-contain ml-6" />
+              <img src={Gmf5} alt="Firefighter Illustration" className="w-72 h-72 object-contain ml-6" />
             </div>
             <div className=" flex-col mx-8 p-6 rounded-lg border max-w-xl h-auto items-center align-middle justify-center flex">
               <h1 className='text-2xl text-purple-400 text-center font-semibold p-3'>Score Big with Discount Coupons!</h1>
@@ -81,7 +81,7 @@ const Gamification = () => {
 
           </div>
           {/* Perks Section */}
-          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0">
+          <div className="flex justify-center items-center flex-col md:flex-row space-y-6 md:space-y-0 p-12">
             
             <div className=" flex-col mx-8 p-6 rounded-lg border max-w-xl h-auto items-center align-middle justify-center flex">
               <h1 className='text-2xl text-purple-400 text-center font-semibold p-3'>Earn Rewards as You Verify Facts!!</h1>
@@ -91,7 +91,7 @@ const Gamification = () => {
              
             </div>
             <div className="flex-shrink-0 mx-8 ">
-              <img src={Gmf4} alt="Firefighter Illustration" className="w-96 h-96 object-contain ml-6" />
+              <img src={Gmf4} alt="Firefighter Illustration" className="w-72 h-72 object-contain ml-6" />
             </div>
 
           </div>
