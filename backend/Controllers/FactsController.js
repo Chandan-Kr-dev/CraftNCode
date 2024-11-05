@@ -51,7 +51,7 @@ const factCheckClaim = async (claim) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching fact check data:", error.message);
-    return null;
+    return error.message
   }
 };
 
