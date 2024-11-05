@@ -51,7 +51,7 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       setLoader(true)
-      axios.post(`${import.meta.env.VITE_DEV_URL}users/login`,{Email,Password})
+      axios.post(`${import.meta.env.VITE_DEV_URL}users/login`,{Email,Password}) // replace https://craftncode.onrender.com/ in place of import.meta.env.VITE_DEV_URL
       .then(res=>{
         console.log(res.data)
         if(res.data.message=="Success"){

@@ -20,7 +20,7 @@ const RegistrationForm = () => {
     e.preventDefault()
     const Username=FName+" "+LName
     try {
-      axios.post(`${import.meta.env.VITE_DEV_URL}users/signup`,{Username,Email,password})
+      axios.post(`${import.meta.env.VITE_DEV_URL}users/signup`,{Username,Email,password}) // replace https://craftncode.onrender.com/ in place of import.meta.env.VITE_DEV_URL
       .then(res=>{
         console.log(res)
         alert("User Registered Successfully")

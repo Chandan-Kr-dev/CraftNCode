@@ -26,7 +26,7 @@ const Main = () => {
     // Simulate API call - replace with actual fact-checking logic
     try {
       setIsLoading(true)
-      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText })
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of import.meta.env.VITE_DEV_URL
         .then(res => {
           console.log(res.data)
       
