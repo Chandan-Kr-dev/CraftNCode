@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
@@ -13,6 +13,8 @@ const Main = () => {
   const [factText, setFactText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);
+  let claimss=[]
+
 
   const handleVerifyFact = async (e) => {
     e.preventDefault();
@@ -26,11 +28,22 @@ const Main = () => {
       setIsLoading(true)
       axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText })
         .then(res => {
-          console.log(res)
+          console.log(res.data)
+      
+            let rand1=Math.floor(Math.random() * (10 - 0 + 1) + 0);
+            let rand2=Math.floor(Math.random() * (10 - 0 + 1) + 0);
+            // console.log(rand1,rand2)
+            // claimss[0]=res.data.claims[rand1]
+            // claimss[1]=res.data.claims[rand2]
+  
+            // console.log(claimss)
+       
           setResult({
             isVerified: true,
+            claim1:res.data.claims[rand1],
+            claim2:res.data.claims[rand2],
             confidence: 0.85,
-            sources: ['Source 1', 'Source 2']
+            sources: [res.data.claims[rand1].claimReview.url, res.data.claims[rand2].claimReview.url]
           });
 
         })
@@ -158,6 +171,8 @@ const Main = () => {
                       {result.isVerified ? 'Fact Verified' : 'Fact Not Verified'}
                     </p>
                     <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p>
+                    <p>Claim 1:{result.claim1}</p>
+                    <p>Claim 2 : {result.claim1}</p>
                     <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
                       <ul className="list-disc list-inside ml-2">
