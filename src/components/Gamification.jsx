@@ -23,7 +23,7 @@ const Gamification = () => {
             <p className='px-6'>
               Challenge yourself with fact-checking games. Test your knowledge on trending topics and uncover the truth behind viral news and Facts !
             </p>
-            <button className='btn-1-hero mt-4'>Play Games</button>
+            <button className='btn-1-hero mt-4'><a href='/games'>Play Games</a></button>
           </div>
 
           <div className="flex-shrink-0 mx-8 ">
@@ -40,7 +40,7 @@ const Gamification = () => {
             <p className='px-6'>
               Participate in daily and weekly challenges to see your name on our leaderboard. With every quiz you complete, climb up the ranks and earn your place as a verified truth-seeker!
             </p>
-            <button className='btn-1-hero mt-4'>Play Quizes</button>
+            <button className='btn-1-hero mt-4'><a href='/quizes'>Play Quizes</a></button>
           </div>
 
 
