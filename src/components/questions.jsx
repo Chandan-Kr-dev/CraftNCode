@@ -93,11 +93,5 @@ export const questions = [
     language: "en"
   },
   
-  
-  
-  
-  
-
-
   // Add more questions here with mixed languages
 ];
