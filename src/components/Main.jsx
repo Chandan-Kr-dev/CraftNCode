@@ -13,8 +13,7 @@ const Main = () => {
   const [factText, setFactText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);
-  let claimss=[]
-
+  
 
   const handleVerifyFact = async (e) => {
     e.preventDefault();
@@ -26,18 +25,13 @@ const Main = () => {
     // Simulate API call - replace with actual fact-checking logic
     try {
       setIsLoading(true)
-      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of import.meta.env.VITE_DEV_URL
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of ${import.meta.env.VITE_DEV_URL}
         .then(res => {
           console.log(res.data)
       
             let rand1=Math.floor(Math.random() * (10 - 0 + 1) + 0);
             let rand2=Math.floor(Math.random() * (10 - 0 + 1) + 0);
-            // console.log(rand1,rand2)
-            // claimss[0]=res.data.claims[rand1]
-            // claimss[1]=res.data.claims[rand2]
-  
-            // console.log(claimss)
-       
+            
           setResult({
             isVerified: true,
             claim1:res.data.claims[rand1],
@@ -48,7 +42,7 @@ const Main = () => {
 
         })
       
-      // setIsLoading(false)
+      setIsLoading(false)
     } catch (error) {
       console.error('Error verifying fact:', error);
     } finally {
@@ -171,8 +165,7 @@ const Main = () => {
                       {result.isVerified ? 'Fact Verified' : 'Fact Not Verified'}
                     </p>
                     <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p>
-                    <p>Claim 1:{result.claim1}</p>
-                    <p>Claim 2 : {result.claim1}</p>
+                    
                     <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
                       <ul className="list-disc list-inside ml-2">
