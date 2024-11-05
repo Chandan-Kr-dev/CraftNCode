@@ -21,7 +21,7 @@ const Navbar = () => {
             <a href="/docs">Explore</a>
           </li>
           <li>
-            <a href="">Gamification</a>
+            <a href="/gamification">Gamification</a>
           </li>
           <li>
             <a href="/truthmate">TruthMate</a>
