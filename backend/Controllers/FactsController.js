@@ -3,6 +3,9 @@ dotenv.config();
 const axios = require("axios");
 
 const { translate } = require("@vitalets/google-translate-api");
+const {HttpProxyAgent}=require('http-proxy-agent');
+
+const agent = new HttpProxyAgent('http://103.152.112.162:80');
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -22,8 +25,10 @@ const detectLanguage = async (text) => {
 // Translate to English
 const translateToEnglish = async (text) => {
   try {
+    
     const translatedLang = await translate(text, {
       to: "en",
+      fetchOptions:{agent}
     });
 
     return translatedLang.text;
@@ -33,13 +38,21 @@ const translateToEnglish = async (text) => {
 };
 
 const factCheckClaim = async (claim) => {
-  const response = await axios.post("https://serpapi.com/search", {
-    engine:"google",
-    q:claim,
-    api_key:process.env.SEARCH_API_KEY,
-  });
-  console.log(response.message)
-  return response.message;
+  try {
+    const response = await axios.get(
+      'https://factchecktools.googleapis.com/v1alpha1/claims:search',
+      {
+        params: {
+          query: claim,
+          key: process.env.REACT_APP_GOOGLE_FACT_CHECK_API_KEY,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching fact check data:", error);
+    return null;
+  }
 };
 
 module.exports = { detectLanguage, translateToEnglish, factCheckClaim };
