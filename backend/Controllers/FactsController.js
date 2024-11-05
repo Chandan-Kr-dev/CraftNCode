@@ -5,9 +5,9 @@ const axios = require("axios");
 const { translate } = require("@vitalets/google-translate-api");
 const {HttpProxyAgent}=require('http-proxy-agent');
 
-const agent = new HttpProxyAgent('http://103.152.112.162:80');
+const agent = new HttpProxyAgent('http://5.9.238.29:80');
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+
 
 const detectLanguage = async (text) => {
   console.log(text);
@@ -50,7 +50,7 @@ const factCheckClaim = async (claim) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching fact check data:", error);
+    console.error("Error fetching fact check data:", error.message);
     return null;
   }
 };

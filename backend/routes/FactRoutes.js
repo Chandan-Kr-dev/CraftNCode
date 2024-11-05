@@ -19,6 +19,8 @@ FactRouter.post("/detect", async (req, res) => {
 
   const response=await FactsController.factCheckClaim(translatedtoEnglish);
   console.log(response)
+  // console.log(response.claims)
+  res.json(response);
 });
 
 module.exports = FactRouter;
