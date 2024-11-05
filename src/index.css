@@ -194,7 +194,24 @@ body {
   font-weight: 500;
   transition: all 0.5s ease;
 }
+.btn-3-hero {
+  width: 160px;
+  height: 40px;
+  color: rgba(245, 245, 245, 0.827);
+  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.274);
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  font-weight: 500;
+
+}
 .btn-2-hero:hover {
+  color: gray;
+  border: 1px solid rgba(128, 128, 128, 0.674);
+}
+.btn-3-hero:hover {
   color: gray;
   border: 1px solid rgba(128, 128, 128, 0.674);
 }
@@ -641,4 +658,62 @@ font-size: 26px;
 .card-para {
   font-size: 0.8rem;
   margin-top: 6px;
+}
+.divider {
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 10px;
+  border:  1px solid #fafafa4c;
+}
+
+/* faq styles */
+/* src/FAQSection.css */
+
+.faq-section {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.faq-section h2 {
+ 
+  margin-bottom: 20px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+}
+
+.accordion-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordion-question h4 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.accordion-answer {
+  padding-top: 10px;
+  color: #c084fc;
+}
+
+.accordion-question span {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: #c084fc;
+
+}
+.quiz-container {
+  width: 60%;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+.rewards-img {
+  border-radius: 50%;
 }
