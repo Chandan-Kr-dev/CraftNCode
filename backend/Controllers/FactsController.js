@@ -12,7 +12,7 @@ const agent = new HttpProxyAgent('http://5.9.238.29:80');
 const detectLanguage = async (text) => {
   console.log(text);
   try {
-    const response = await axios.post("http://localhost:5000/predict", {
+    const response = await axios.post(`${process.env.PYTHON_SERVER}predict`, {
       input: text,
     });
     console.log(response.data.prediction);
