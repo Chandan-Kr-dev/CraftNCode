@@ -5,7 +5,7 @@ const axios = require("axios");
 const { translate } = require("@vitalets/google-translate-api");
 const {HttpProxyAgent}=require('http-proxy-agent');
 
-const agent = new HttpProxyAgent('http://5.9.238.29:80');
+const agent = new HttpProxyAgent('http://103.209.36.58:81');
 
 
 
