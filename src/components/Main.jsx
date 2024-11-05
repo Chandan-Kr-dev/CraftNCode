@@ -32,13 +32,25 @@ const Main = () => {
             let rand1=Math.floor(Math.random() * (10 - 0 + 1) + 0);
             let rand2=Math.floor(Math.random() * (10 - 0 + 1) + 0);
             
-          setResult({
-            isVerified: true,
-            // claim1:res.data.claims[rand1],
-            // claim2:res.data.claims[rand2],
-            confidence: 0.85,
-            // sources: [res.data.claims[rand1].claimReview.url, res.data.claims[rand2].claimReview.url]
-          });
+          if(res.data){
+
+            setResult({
+              isVerified: true,
+               claim1:res.data.claims[rand1],
+              claim2:res.data.claims[rand2],
+              confidence: 0.85,
+              sources: [res.data.claims[rand1].claimReview.url, res.data.claims[rand2].claimReview.url]
+            });
+          }
+          else{
+            setResult({
+              isVerified: false,
+              claim1: "No Fact Found",
+              claim2: "No Fact Found",
+              confidence: 0.0,
+              sources: []
+            });
+          }
 
         })
       
@@ -164,14 +176,14 @@ const Main = () => {
                     </p>
                     <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p>
                     
-                    {/* <div>
+                    <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
                       <ul className="list-disc list-inside ml-2">
                         {result.sources.map((source, index) => (
                           <li key={index} className="text-blue-600">{source}</li>
                         ))}
                       </ul>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
