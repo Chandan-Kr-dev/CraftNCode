@@ -2,11 +2,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 const axios = require("axios");
 
-const { translate } = require("@vitalets/google-translate-api");
-const {HttpProxyAgent}=require('http-proxy-agent');
-
-const agent = new HttpProxyAgent('http://116.104.129.83:5002');
-
 
 
 const detectLanguage = async (text) => {
@@ -26,12 +21,17 @@ const detectLanguage = async (text) => {
 const translateToEnglish = async (text) => {
   try {
     
-    const translatedLang = await translate(text, {
-      to: "en",
-      fetchOptions:{agent}
-    });
+    const translatedLang = await axios.post('https://deep-translator-api.azurewebsites.net/google',
+      {
+        "source": "auto",
+        "target": "en",
+        "text": text,
+        "proxies": []
+      }
+    )
 
-    return translatedLang.text;
+  
+    return translatedLang.data.translation;
   } catch (error) {
     console.error(error);
   }
