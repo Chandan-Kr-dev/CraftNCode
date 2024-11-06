@@ -88,7 +88,6 @@ const Main = () => {
           <img src={Main2} className=' main2' />
 
 
-          <form >
             {/* Language Selection */}
             <div className="relative w-full max-w-md">
               {/* Dropdown Button */}
@@ -117,6 +116,7 @@ const Main = () => {
                 </div>
               )}
             </div>
+          <form onSubmit={handleVerifyFact} >
 
             {/* Fact Input */}
             <div className="main-verify-container">
@@ -145,7 +145,7 @@ const Main = () => {
 
               {/* Verify Button */}
               <button
-                onClick={handleVerifyFact}
+                type='submit'
                 disabled={isLoading==true}
                 className="verify-button bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
               >
