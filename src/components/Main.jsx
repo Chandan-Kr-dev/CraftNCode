@@ -17,7 +17,7 @@ const Main = () => {
 
   const handleVerifyFact = async (e) => {
     e.preventDefault();
-
+    console.log("Clicked ")
    
 
     setIsLoading(true);
@@ -25,28 +25,24 @@ const Main = () => {
     // Simulate API call - replace with actual fact-checking logic
     try {
       setIsLoading(true)
-      axios.post(`https://craftncode.onrender.com/api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of ${import.meta.env.VITE_DEV_URL}
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of ${import.meta.env.VITE_DEV_URL}
         .then(res => {
           console.log(res.data)
       
-            let rand1=Math.floor(Math.random() * (10 - 0 + 1) + 0);
-            let rand2=Math.floor(Math.random() * (10 - 0 + 1) + 0);
             
           if(res.data){
 
             setResult({
               isVerified: true,
-               claim1:res.data.claims[rand1],
-              claim2:res.data.claims[rand2],
-              confidence: 0.85,
-              sources: [res.data.claims[rand1].claimReview.url, res.data.claims[rand2].claimReview.url]
+               claim:res.data.fact,
+              
+              sources: [res.data.sources[0], res.data.sources[1]]
             });
           }
           else{
             setResult({
               isVerified: false,
-              claim1: "No Fact Found",
-              claim2: "No Fact Found",
+              
               confidence: 0.0,
               sources: []
             });
@@ -88,7 +84,6 @@ const Main = () => {
           <img src={Main2} className=' main2' />
 
 
-          <form onSubmit={handleVerifyFact}>
             {/* Language Selection */}
             <div className="relative w-full max-w-md">
               {/* Dropdown Button */}
@@ -117,6 +112,7 @@ const Main = () => {
                 </div>
               )}
             </div>
+          <form onSubmit={handleVerifyFact} >
 
             {/* Fact Input */}
             <div className="main-verify-container">
@@ -145,8 +141,8 @@ const Main = () => {
 
               {/* Verify Button */}
               <button
-                type="submit"
-                disabled={isLoading}
+                type='submit'
+                disabled={isLoading==true}
                 className="verify-button bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
               >
                 {isLoading ? (
@@ -174,8 +170,8 @@ const Main = () => {
                         }`}></span>
                       {result.isVerified ? 'Fact Verified' : 'Fact Not Verified'}
                     </p>
-                    <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p>
-                    
+                    {/* <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p> */}
+                    <p>Claim :{result.claim}</p>
                     <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
                       <ul className="list-disc list-inside ml-2">

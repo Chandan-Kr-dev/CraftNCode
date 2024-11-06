@@ -2,12 +2,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 const axios = require("axios");
 
-const { translate } = require("@vitalets/google-translate-api");
-const {HttpProxyAgent}=require('http-proxy-agent');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const agent = new HttpProxyAgent('http://103.209.36.58:81');
-
-
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const detectLanguage = async (text) => {
   console.log(text);
@@ -25,13 +23,17 @@ const detectLanguage = async (text) => {
 // Translate to English
 const translateToEnglish = async (text) => {
   try {
-    
-    const translatedLang = await translate(text, {
-      to: "en",
-      fetchOptions:{agent}
-    });
+    const translatedLang = await axios.post(
+      "https://deep-translator-api.azurewebsites.net/google",
+      {
+        source: "auto",
+        target: "en",
+        text: text,
+        proxies: [],
+      }
+    );
 
-    return translatedLang.text;
+    return translatedLang.data.translation;
   } catch (error) {
     console.error(error);
   }
@@ -39,19 +41,33 @@ const translateToEnglish = async (text) => {
 
 const factCheckClaim = async (claim) => {
   try {
-    const response = await axios.get(
-      'https://factchecktools.googleapis.com/v1alpha1/claims:search',
-      {
-        params: {
-          query: claim,
-          key: process.env.REACT_APP_GOOGLE_FACT_CHECK_API_KEY,
-        },
-      }
-    );
-    return response.data;
+    // const response = await axios.get(
+    //   'https://factchecktools.googleapis.com/v1alpha1/claims:search',
+    //   {
+    //     params: {
+    //       query: claim,
+    //       key: process.env.REACT_APP_GOOGLE_FACT_CHECK_API_KEY,
+    //     },
+    //   }
+    // );
+    const prompt = `Is the statement "${claim}" true? Please provide the response in the following JSON format:
+   {
+      "fact": "real fact",
+      "sources": [
+        "source_url_1",
+        "source_url_2"
+      ]
+    } just the object and no extra text or special character in response`;
+    const response1 = await model.generateContent(prompt);
+    console.log(response1.response.text());
+
+    const responseData = JSON.parse(response1.response.text());
+    console.log(responseData.fact);
+
+    return responseData;
   } catch (error) {
-    console.error("Error fetching fact check data:", error.message);
-    return error.message
+    console.error("Error fetching fact check data:", error);
+    return error.message;
   }
 };
 
