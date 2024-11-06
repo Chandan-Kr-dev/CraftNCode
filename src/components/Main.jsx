@@ -25,7 +25,7 @@ const Main = () => {
     // Simulate API call - replace with actual fact-checking logic
     try {
       setIsLoading(true)
-      axios.post(`https://craftncode.onrender.com/api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of ${import.meta.env.VITE_DEV_URL}
+      axios.post(`${import.meta.env.VITE_DEV_URL}api/detect`, { factText }) // replace https://craftncode.onrender.com/ in place of ${import.meta.env.VITE_DEV_URL}
         .then(res => {
           console.log(res.data)
       
@@ -88,7 +88,7 @@ const Main = () => {
           <img src={Main2} className=' main2' />
 
 
-          <form onSubmit={handleVerifyFact}>
+          <form >
             {/* Language Selection */}
             <div className="relative w-full max-w-md">
               {/* Dropdown Button */}
@@ -145,8 +145,8 @@ const Main = () => {
 
               {/* Verify Button */}
               <button
-                type="submit"
-                disabled={isLoading}
+                onClick={handleVerifyFact}
+                disabled={isLoading==true}
                 className="verify-button bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
               >
                 {isLoading ? (
