@@ -29,24 +29,20 @@ const Main = () => {
         .then(res => {
           console.log(res.data)
       
-            let rand1=Math.floor(Math.random() * (10 - 0 + 1) + 0);
-            let rand2=Math.floor(Math.random() * (10 - 0 + 1) + 0);
             
           if(res.data){
 
             setResult({
               isVerified: true,
-               claim1:res.data.claims[rand1],
-              claim2:res.data.claims[rand2],
-              confidence: 0.85,
-              sources: [res.data.claims[rand1].claimReview.url, res.data.claims[rand2].claimReview.url]
+               claim:res.data.fact,
+              
+              sources: [res.data.sources[0], res.data.sources[1]]
             });
           }
           else{
             setResult({
               isVerified: false,
-              claim1: "No Fact Found",
-              claim2: "No Fact Found",
+              
               confidence: 0.0,
               sources: []
             });
@@ -174,8 +170,8 @@ const Main = () => {
                         }`}></span>
                       {result.isVerified ? 'Fact Verified' : 'Fact Not Verified'}
                     </p>
-                    <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p>
-                    
+                    {/* <p className='text-gray-200 font-semibold'>Confidence: {(result.confidence * 100).toFixed(1)}%</p> */}
+                    <p>Claim :{result.claim}</p>
                     <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
                       <ul className="list-disc list-inside ml-2">
