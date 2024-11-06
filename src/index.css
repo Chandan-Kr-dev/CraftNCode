@@ -717,3 +717,61 @@ font-size: 26px;
 .rewards-img {
   border-radius: 50%;
 }
+/*GAMES PAGE*/
+
+
+/* Hide the card */
+.card .front {
+  transform: rotateY(90deg);
+  position: absolute;
+  transition: all ease-in var(--transition-flip);
+}
+
+/* Make it visible */
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: var(--transition-flip);
+}
+
+/* Card cover */
+.App {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 250px;
+  height: 250px;
+  background-color: #00040f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: transform 0.3s;
+  margin: 20px 20px;
+}
+
+.card.flipped {
+ 
+  color: white;
+}
+.card img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.card h1 {
+  font-size: 48px;
+}
+.card p {
+  font-size: 20px;
+  padding: 10px 10px;
+}
