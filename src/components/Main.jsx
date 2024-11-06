@@ -17,7 +17,7 @@ const Main = () => {
 
   const handleVerifyFact = async (e) => {
     e.preventDefault();
-
+    console.log("Clicked ")
    
 
     setIsLoading(true);
