@@ -50,18 +50,31 @@ const factCheckClaim = async (claim) => {
     //     },
     //   }
     // );
-    const prompt = `Is the statement "${claim}" true? Please provide the response in the following JSON format:
-   {
-      "fact": "real fact",
-      "sources": [
-        "source_url_1",
-        "source_url_2"
-      ]
-    } just the object and no extra text or special character in response`;
+    console.log(claim);
+    const prompt = `Provide a JSON response , The JSON should have two fields: 'fact' and 'sources'. The 'fact' field should contain a concise summary of the origin. The 'sources' field should be an array of URLs supporting the fact.
+
+Example JSON output:
+{
+  "fact": "...",
+  "sources": [
+    "...",
+    "..."
+  ]
+}
+
+Question: "${claim}"`;
     const response1 = await model.generateContent(prompt);
     console.log(response1.response.text());
 
-    const responseData = JSON.parse(response1.response.text());
+    function cleanJsonResponse(response) {
+      let cleanedResponse = response.replace(/```json\s*/, ""); // Remove ```json and any whitespace after it
+      cleanedResponse = cleanedResponse.replace(/```\s*$/, ""); // remove ``` and any whitespace before the end of the string.
+      cleanedResponse = cleanedResponse.trim(); // Remove leading/trailing whitespace
+      return cleanedResponse;
+    }
+    const trimmedResponse = cleanJsonResponse(response1.response.text());
+
+    const responseData = JSON.parse(trimmedResponse);
     console.log(responseData.fact);
 
     return responseData;

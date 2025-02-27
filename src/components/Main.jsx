@@ -20,7 +20,7 @@ const Main = () => {
     console.log("Clicked ")
    
 
-    setIsLoading(true);
+    
 
     // Simulate API call - replace with actual fact-checking logic
     try {
@@ -52,6 +52,7 @@ const Main = () => {
       
       setIsLoading(false)
     } catch (error) {
+      setIsLoading(false)
       console.error('Error verifying fact:', error);
     }
   };
@@ -166,7 +167,7 @@ const Main = () => {
                   <h3 className="font-medium text-2xl mb-2">Verification Result:</h3>
                   <div className="space-y-2">
                     <p className="flex items-center justify-center py-2">
-                      <span className={`h-3 w-3 rounded-full mr-2 ${result.isVerified ? 'bg-green-500' : 'bg-red-500'
+                      <span className={`h-3 min-w-3 rounded-full mr-2 ${result.isVerified ? 'bg-green-500' : 'bg-red-500'
                         }`}></span>
                       {result.isVerified ? 'Fact Verified' : 'Fact Not Verified'}
                     </p>
@@ -174,9 +175,11 @@ const Main = () => {
                     <p>Claim :{result.claim}</p>
                     <div>
                       <p className=" text-gray-400 font-semibold">Sources:</p>
-                      <ul className="list-disc list-inside ml-2">
+                      <ul className="list-disc list-inside ml-2 space-y-8">
                         {result.sources.map((source, index) => (
-                          <li key={index} className="text-blue-600">{source}</li>
+                          <li>
+                          <a key={index} className="text-blue-600 cursor-pointer " href={source}><span className='text-white'>Source {index+1} : </span> {source}</a> 
+                          </li>
                         ))}
                       </ul>
                     </div>
